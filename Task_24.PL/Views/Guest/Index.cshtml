@@ -1,0 +1,41 @@
+﻿@model Task_24.PL.Models.CommentViewModel
+@{
+    ViewBag.Title = "For guests";
+}
+
+<h2 class="page-header-2">Comments</h2>
+
+<h3 class="page-header-3">Add your comment</h3>
+
+@using (Html.BeginForm("Index", "Guest", FormMethod.Post, new { @class = "comments-form" })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="form-group">
+
+        @Html.LabelFor(model => model.UserName, "User name")
+        @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Enter your name here", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Text)
+        @Html.TextAreaFor(model => model.Text, new { @placeholder = "Enter your comment here...", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Text)
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary">
+}
+
+<h3 class="page-header-3">Other users comments</h3>
+
+@foreach (var comment in ViewBag.Comments) {
+    <div class="card comment">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p>@comment.Text</p>
+                <footer class="blockquote-footer">@comment.PublicationDate</footer>
+            </blockquote>
+        </div>
+        <div class="card-footer text-muted">
+            @comment.PublicationDate
+        </div>
+    </div>
+}
