@@ -5,6 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
+using Task_24.BLL.Infrastructure;
+using Task_24.PL.Util;
 
 namespace Task_24.PL {
     public class MvcApplication : System.Web.HttpApplication {
@@ -13,6 +18,15 @@ namespace Task_24.PL {
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+
+            // Dependency injection
+            var articleModule = new ArticleModule();
+            var serviceModule = new ServiceModule("DefaultConnection");
+            var kernel = new StandardKernel(articleModule, serviceModule);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

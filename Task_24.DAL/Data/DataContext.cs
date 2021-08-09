@@ -19,7 +19,7 @@ namespace Task_24.DAL.Data {
             Database.SetInitializer<DataContext>(new DataContextInitializer());
         }
 
-        public DataContext() : base("name=DataContext") {
+        public DataContext() : base("name=Task_24PLContext") {
         }
 
         public DbSet<Article> Article { get; set; }

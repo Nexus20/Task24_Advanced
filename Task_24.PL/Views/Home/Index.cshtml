@@ -1,31 +1,52 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Task_24.PL.Models.ArticleViewModel>
+@{
+    ViewBag.Title = "Index";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <section class="col-10 news-list">
+        <div class="row">
+            <h2 class="page-header-2 col-12">Articles</h2>
+        </div>
+        @foreach (var article in Model) {
+            <article class="card mb-3">
+                <img class="card-img-top" src="@article.ImagePath" alt="Card image cap">
+                <div class="card-body">
+                    <h1 class="card-title">@article.Title</h1>
+                    <p class="card-text">@article.Text</p>
+                    <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => article.PublicationDate)</small></p>
+                </div>
+            </article>
+        }
+    </section>
+    <aside class="col-2 menu-sidebar">
+        <h3 style="margin-bottom: 20px;">Menu</h3>
+        <div class="card">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                @*<li class="list-group-item">
+                    @Html.ActionLink("For guests", "Index", "Guest")
+                </li>
+                <li class="list-group-item">
+                    @Html.ActionLink("Questions", "Index", "Form")
+                </li>
+                <li class="list-group-item">
+                    @Html.ActionLink("News", "Index", "News")
+                </li>*@
+            </ul>
+        </div>
+        <br /><h3>Latest news</h3><br />
+        @*@foreach (var item in ViewBag.LatestNews) {
+            <article class="card mb-3">
+                <img class="card-img-top" src="@item.ImagePath" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text">@item.Text</p>
+                    <p class="card-text"><small class="text-muted">@item.PublicationDate</small></p>
+                </div>
+            </article>
+        }*@
+    </aside>
 </div>

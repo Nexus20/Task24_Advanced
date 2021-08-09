@@ -95,23 +95,28 @@ namespace Task_24.DAL.Data {
             return new Comment[] {
                 new Comment() {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-                    UserName = "User1"
+                    UserName = "User1",
+                    PublicationDate = DateTime.Now
                 },
                 new Comment() {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-                    UserName = "User2"
+                    UserName = "User2",
+                    PublicationDate = DateTime.Now
                 },
                 new Comment() {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-                    UserName = "User3"
+                    UserName = "User3",
+                    PublicationDate = DateTime.Now
                 },
                 new Comment() {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-                    UserName = "User4"
+                    UserName = "User4",
+                    PublicationDate = DateTime.Now
                 },
                 new Comment() {
                     Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
-                    UserName = "User5"
+                    UserName = "User5",
+                    PublicationDate = DateTime.Now
                 },
             };
         }
