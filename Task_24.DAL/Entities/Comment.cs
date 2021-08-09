@@ -10,9 +10,5 @@ namespace Task_24.DAL.Entities {
         public string Text { get; set; }
         [DataType(DataType.Date)]
         public DateTime PublicationDate { get; set; }
-
-        public Comment() {
-            PublicationDate = DateTime.Now;
-        }
     }
 }
