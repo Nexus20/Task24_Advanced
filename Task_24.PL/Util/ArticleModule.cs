@@ -11,6 +11,7 @@ namespace Task_24.PL.Util {
 
         public override void Load() {
             Bind<IArticleService>().To<ArticleService>();
+            Bind<INewsService>().To<NewsService>();
         }
     }
 }

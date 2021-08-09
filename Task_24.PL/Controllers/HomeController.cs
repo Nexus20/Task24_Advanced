@@ -12,16 +12,22 @@ namespace Task_24.PL.Controllers {
     public class HomeController : Controller {
 
         private readonly IArticleService _articleService;
+        private readonly INewsService _newsService;
 
-        public HomeController(IArticleService articleService) {
+        public HomeController(IArticleService articleService, INewsService newsService) {
             _articleService = articleService;
+            _newsService = newsService;
         }
 
         [HttpGet]
         public ActionResult Index() {
 
+            var newsDtos = _newsService.GetNews().Take(3);
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<NewsDTO, NewsViewModel>()).CreateMapper();
+            ViewBag.LatestNews = mapper.Map<IEnumerable<NewsDTO>, List<NewsViewModel>>(newsDtos);
+
             var articleDtos = _articleService.GetArticles();
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, ArticleViewModel>()).CreateMapper();
+            mapper = new MapperConfiguration(cfg => cfg.CreateMap<ArticleDTO, ArticleViewModel>()).CreateMapper();
             var articles = mapper.Map<IEnumerable<ArticleDTO>, List<ArticleViewModel>>(articleDtos);
             return View(articles);
         }
