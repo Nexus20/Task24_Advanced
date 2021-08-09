@@ -11,7 +11,7 @@ namespace Task_24.DAL {
     /// <summary>
     /// Unit of work pattern implementation
     /// </summary>
-    public class UnitOfWork : IDisposable {
+    public class UnitOfWork : IUnitOfWork {
 
         private readonly DataContext _context = new DataContext();
         private IGenericRepository<News> _newsRepository;

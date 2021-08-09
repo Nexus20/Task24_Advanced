@@ -13,9 +13,9 @@ using Task_24.DAL.Entities;
 namespace Task_24.BLL.Services {
     public class ArticleService : IArticleService {
 
-        public UnitOfWork UnitOfWork { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
-        public ArticleService(UnitOfWork uow) {
+        public ArticleService(IUnitOfWork uow) {
             UnitOfWork = uow;
         }
 

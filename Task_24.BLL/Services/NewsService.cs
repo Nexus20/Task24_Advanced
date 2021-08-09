@@ -13,9 +13,9 @@ using Task_24.DAL.Entities;
 namespace Task_24.BLL.Services {
     public class NewsService : INewsService {
 
-        public UnitOfWork UnitOfWork { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
-        public NewsService(UnitOfWork uow) {
+        public NewsService(IUnitOfWork uow) {
             UnitOfWork = uow;
         }
 

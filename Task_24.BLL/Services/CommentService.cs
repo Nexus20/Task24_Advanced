@@ -13,9 +13,9 @@ using Task_24.DAL.Entities;
 namespace Task_24.BLL.Services {
     public class CommentService : ICommentService {
 
-        public UnitOfWork UnitOfWork { get; }
+        public IUnitOfWork UnitOfWork { get; }
 
-        public CommentService(UnitOfWork uow) {
+        public CommentService(IUnitOfWork uow) {
             UnitOfWork = uow;
         }
 
