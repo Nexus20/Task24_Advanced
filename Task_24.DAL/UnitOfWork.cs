@@ -22,32 +22,32 @@ namespace Task_24.DAL {
         private IGenericRepository<Answer> _answersRepository;
 
         /// <summary>
-        /// 
+        /// Repository property to access news
         /// </summary>
         public IGenericRepository<News> NewsRepository => _newsRepository ?? (_newsRepository = new GenericRepository<News>(_context));
         /// <summary>
-        /// 
+        /// Repository property to access comments
         /// </summary>
         public IGenericRepository<Comment> CommentsRepository => _commentsRepository ?? (_commentsRepository = new GenericRepository<Comment>(_context));
         /// <summary>
-        /// 
+        /// Repository property to access genres
         /// </summary>
         public IGenericRepository<Genre> GenresRepository => _genresRepository ?? (_genresRepository = new GenericRepository<Genre>(_context));
         /// <summary>
-        /// 
+        /// Repository property to access authors
         /// </summary>
         public IGenericRepository<Author> AuthorsRepository => _authorsRepository ?? (_authorsRepository = new GenericRepository<Author>(_context));
         /// <summary>
-        /// 
+        /// Repository property to access articles
         /// </summary>
         public IGenericRepository<Article> ArticlesRepository => _articlesRepository ?? (_articlesRepository = new GenericRepository<Article>(_context));
         /// <summary>
-        /// 
+        /// Repository property to access answers
         /// </summary>
         public IGenericRepository<Answer> AnswersRepository => _answersRepository ?? (_answersRepository = new GenericRepository<Answer>(_context));
 
         /// <summary>
-        /// 
+        /// Method for saving changes
         /// </summary>
         public void Save() {
             _context.SaveChanges();
@@ -69,7 +69,7 @@ namespace Task_24.DAL {
         }
 
         /// <summary>
-        /// 
+        /// Dispose
         /// </summary>
         public void Dispose() {
             Dispose(true);
