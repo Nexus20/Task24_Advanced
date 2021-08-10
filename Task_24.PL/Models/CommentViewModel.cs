@@ -6,11 +6,11 @@ using System.Web;
 
 namespace Task_24.PL.Models {
     public class CommentViewModel : BaseViewModel {
-        [Required]
-        [StringLength(32, MinimumLength = 3)]
+        [Required(ErrorMessage = "User's name is required")]
+        [StringLength(32, MinimumLength = 3, ErrorMessage = "User's name length must be from 3 to 32 characters")]
         public string UserName { get; set; }
-        [Required]
-        [StringLength(300, MinimumLength = 1)]
+        [Required(ErrorMessage = "Comment is required")]
+        [StringLength(300, MinimumLength = 1, ErrorMessage = "Comment length must be from 1 to 300 characters")]
         public string Text { get; set; }
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime PublicationDate { get; set; }
