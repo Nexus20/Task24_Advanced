@@ -9,7 +9,7 @@ using Task_24.DAL.Entities;
 
 namespace Task_24.DAL.Repositories {
     /// <summary>
-    /// 
+    /// Implementation of the repository pattern
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity {
@@ -18,16 +18,16 @@ namespace Task_24.DAL.Repositories {
         private readonly DbSet<TEntity> _dbSet;
 
         /// <summary>
-        /// 
+        /// Constructor
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">Database context object</param>
         public GenericRepository(DbContext context) {
             _context = context;
             _dbSet = context.Set<TEntity>();
         }
 
         /// <summary>
-        /// 
+        /// Method for creating entity
         /// </summary>
         /// <param name="item"></param>
         public void Create(TEntity item) {
@@ -35,7 +35,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for finding entity by its id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -44,7 +44,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for getting all entities
         /// </summary>
         /// <returns></returns>
         public IEnumerable<TEntity> Get() {
@@ -52,7 +52,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for getting all entities according to filters, orders and optionally with additional properties
         /// </summary>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
@@ -77,7 +77,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for removing entity by object
         /// </summary>
         /// <param name="item"></param>
         public void Remove(TEntity item) {
@@ -88,7 +88,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for removing entity by id
         /// </summary>
         /// <param name="id"></param>
         public void Remove(object id) {
@@ -97,7 +97,7 @@ namespace Task_24.DAL.Repositories {
         }
 
         /// <summary>
-        /// 
+        /// Method for updating entity
         /// </summary>
         /// <param name="item"></param>
         public void Update(TEntity item) {
@@ -121,12 +121,19 @@ namespace Task_24.DAL.Repositories {
         //        .Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
         //}
 
+        /// <summary>
+        /// Method for saving changes
+        /// </summary>
         public void Save() {
             _context.SaveChanges();
         }
 
         private bool _disposed = false;
 
+        /// <summary>
+        /// Implementation of IDisposable interface
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing) {
             if (!this._disposed) {
                 if (disposing) {
@@ -136,6 +143,9 @@ namespace Task_24.DAL.Repositories {
             this._disposed = true;
         }
 
+        /// <summary>
+        /// Dispose method
+        /// </summary>
         public void Dispose() {
             Dispose(true);
             GC.SuppressFinalize(this);

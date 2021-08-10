@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Task_24.DAL.Entities;
 
 namespace Task_24.DAL.Repositories {
+    /// <summary>
+    /// Interface for repository pattern
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
     public interface IGenericRepository<TEntity> : IDisposable where TEntity : BaseEntity {
 
         void Create(TEntity item);
