@@ -24,8 +24,21 @@ namespace Task_24.PL {
 
             // Dependency injection
             var articleModule = new ArticleModule();
+            var newsModule = new NewsModule();
+            var answerModule = new AnswerModule();
+            var commentModule = new CommentModule();
+            var authorModule = new AuthorModule();
+            var genreModule = new GenreModule();
+
             var serviceModule = new ServiceModule("DefaultConnection");
-            var kernel = new StandardKernel(articleModule, serviceModule);
+            var kernel = new StandardKernel(
+                articleModule,
+                newsModule,
+                answerModule,
+                commentModule,
+                authorModule,
+                genreModule, 
+                serviceModule);
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }

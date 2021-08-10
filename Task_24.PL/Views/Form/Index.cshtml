@@ -1,7 +1,66 @@
-﻿
+﻿@model Task_24.PL.Models.AnswerViewModel
+@using Task_24.PL.Helpers
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Questions";
 }
 
-<h2>Index</h2>
+<h2 class="page-header-2">Questions</h2>
 
+@helper CreateCheckboxList(string name, Dictionary<int, string> data, string checkedItemValue = "") {
+    <ul class="check-list">
+        @foreach (var key in data.Keys) {
+            <li class="form-check">
+                @Html.CheckBox(name, data[key] == checkedItemValue, new { id = (name + data[key]), value = key, @class = "form-check-input" })
+                <label for="@(name + data[key])">@data[key]</label>
+            </li>
+        }
+    </ul>
+}
+
+@helper CreateRadioButtonList(string name, List<string> values, string checkedItemValue = "") {
+    <ul class="check-list">
+        @foreach (var value in values) {
+            <li class="form-check">
+                @Html.RadioButton(name, value, value == checkedItemValue, new { id = (name + value), @class = "form-check-input" })
+                <label for="@(name + value)">@value</label>
+            </li>
+        }
+    </ul>
+}
+
+
+@using (Html.BeginForm("Index", "Form", FormMethod.Post, new { @class = "questions-form" })) {
+    @Html.AntiForgeryToken();
+    @Html.ValidationSummary()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserName)
+        @Html.TextBoxFor(model => model.UserName, new { @placeholder = "Enter your name here", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.UserName)
+    </div>
+
+    @Html.Raw("Select " + ViewBag.Checkbox1Name)
+    @CreateCheckboxList("Genres", ViewBag.Genres as Dictionary<int, string>)
+    @Html.ValidationMessageFor(model => model.Genres);
+
+    @Html.Raw("<br>Select " + ViewBag.Checkbox2Name)
+    @CreateCheckboxList("Authors", ViewBag.Authors as Dictionary<int, string>)
+    @Html.ValidationMessageFor(model => model.Authors);
+
+    @Html.Raw("<br>How highly do you rate the site design?")
+    @Html.CreateRadioButtonList("SiteDesign", ViewBag.SiteDesignRateVariants as List<string>)
+    @Html.ValidationMessageFor(model => model.SiteDesign);
+
+    @Html.Raw("<br>How highly do you rate the usability of the site?")
+    @Html.CreateRadioButtonList("EaseOfUse", ViewBag.EaseOfUseRateVariants as List<string>)
+    @Html.ValidationMessageFor(model => model.EaseOfUse);
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment)
+        @Html.TextAreaFor(model => model.Comment, new { @placeholder = "Enter your comment here...", @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Comment)
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary">
+    <input type="reset" value="Reset" class="btn btn-primary">
+}

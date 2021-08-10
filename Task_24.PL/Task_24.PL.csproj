@@ -152,6 +152,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\FormHelpers.cs" />
+    <Compile Include="Models\AnswerViewModel.cs" />
     <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\AuthorViewModel.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
@@ -159,6 +161,11 @@
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\GenreModule.cs" />
+    <Compile Include="Util\AuthorModule.cs" />
+    <Compile Include="Util\AnswerModule.cs" />
+    <Compile Include="Util\CommentModule.cs" />
+    <Compile Include="Util\NewsModule.cs" />
     <Compile Include="Util\ArticleModule.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +312,7 @@
     <Content Include="Views\Guest\Index.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Form\Index.cshtml" />
+    <Content Include="Views\Form\Answers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

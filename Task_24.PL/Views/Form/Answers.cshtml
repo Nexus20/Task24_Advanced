@@ -1,0 +1,53 @@
+﻿@model Task_24.PL.Models.AnswerViewModel
+
+@{
+    ViewBag.Title = "Answers";
+}
+
+<h2>Your answers are:</h2>
+
+<div class="card">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.UserName)
+            @Html.DisplayFor(model => model.UserName)
+        </li>
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.Genres)
+
+            @foreach (var genre in Model.Genres) {
+
+                if (genre == "false") {
+                    continue;
+                }
+
+                @(genre + " ")
+            }
+        </li>
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.Authors)
+
+            @foreach (var author in Model.Authors) {
+
+                if (author == "false") {
+                    continue;
+                }
+
+                @(author + " ")
+            }
+        </li>
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.SiteDesign)
+            @Html.DisplayFor(model => model.SiteDesign)
+        </li>
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.EaseOfUse)
+            @Html.DisplayFor(model => model.EaseOfUse)
+        </li>
+        <li class="list-group-item">
+            @Html.DisplayNameFor(model => model.Comment)
+            <br />
+            @Html.DisplayFor(model => model.Comment)
+        </li>
+    </ul>
+</div>
