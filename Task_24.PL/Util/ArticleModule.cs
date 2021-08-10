@@ -13,6 +13,9 @@ namespace Task_24.PL.Util {
             Bind<IArticleService>().To<ArticleService>();
             Bind<INewsService>().To<NewsService>();
             Bind<ICommentService>().To<CommentService>();
+            Bind<IAnswerService>().To<AnswerService>();
+            Bind<IGenreService>().To<GenreService>();
+            Bind<IAuthorService>().To<AuthorService>();
         }
     }
 }
