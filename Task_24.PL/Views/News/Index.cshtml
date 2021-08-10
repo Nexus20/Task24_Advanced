@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Task_24.PL.Models.NewsViewModel>
+@{
+    ViewBag.Title = "News";
+}
+
+<h2 class="page-header-2">News</h2>
+
+@foreach (var item in Model) {
+    <article class="card mb-3">
+        <img class="card-img-top" src="@item.ImagePath" alt="Card image cap">
+        <div class="card-body">
+            <h1 class="card-title">@item.Title</h1>
+            <p class="card-text">@item.Text</p>
+            <p class="card-text"><small class="text-muted">@Html.DisplayFor(modelItem => item.PublicationDate)</small></p>
+        </div>
+    </article>
+}
